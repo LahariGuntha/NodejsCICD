@@ -101,6 +101,26 @@
             "name": "${NAME}:latest"
           }
         },
+        "triggers": [
+          {
+            "type": "ImageChange"
+          },
+          {
+            "type": "ConfigChange"
+          },
+          {
+            "type": "GitHub",
+            "github": {
+              "secret": "${GITHUB_WEBHOOK_SECRET}"
+            }
+          },
+          {
+            "type": "Generic",
+            "generic": {
+              "secret": "${GENERIC_WEBHOOK_SECRET}"
+            }
+          }
+        ],
         "postCommit": {
           "script": "npm test"
         }
@@ -119,6 +139,24 @@
         "strategy": {
           "type": "Rolling"
         },
+        "triggers": [
+          {
+            "type": "ImageChange",
+            "imageChangeParams": {
+              "automatic": true,
+              "containerNames": [
+                "nodejs-example"
+              ],
+              "from": {
+                "kind": "ImageStreamTag",
+                "name": "${NAME}:latest"
+              }
+            }
+          },
+          {
+            "type": "ConfigChange"
+          }
+        ],
         "replicas": 1,
         "selector": {
           "name": "${NAME}"
@@ -222,7 +260,7 @@
       "displayName": "Git Repository URL",
       "description": "The URL of the repository with your application source code.",
       "required": true,
-      "value": "https://github.com/alezzandro/nodejs-ex.git"
+      "value": "https://github.com/openshift/nodejs-ex.git"
     },
     {
       "name": "SOURCE_REPOSITORY_REF",
