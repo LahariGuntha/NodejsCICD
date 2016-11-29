@@ -103,12 +103,6 @@
         },
         "triggers": [
           {
-            "type": "ImageChange"
-          },
-          {
-            "type": "ConfigChange"
-          },
-          {
             "type": "GitHub",
             "github": {
               "secret": "${GITHUB_WEBHOOK_SECRET}"
@@ -143,7 +137,7 @@
           {
             "type": "ImageChange",
             "imageChangeParams": {
-              "automatic": true,
+              "automatic": false,
               "containerNames": [
                 "nodejs-example"
               ],
@@ -152,9 +146,6 @@
                 "name": "${NAME}:latest"
               }
             }
-          },
-          {
-            "type": "ConfigChange"
           }
         ],
         "replicas": 1,
@@ -260,7 +251,7 @@
       "displayName": "Git Repository URL",
       "description": "The URL of the repository with your application source code.",
       "required": true,
-      "value": "https://github.com/openshift/nodejs-ex.git"
+      "value": "https://github.com/alezzandro/nodejs-ex.git"
     },
     {
       "name": "SOURCE_REPOSITORY_REF",
