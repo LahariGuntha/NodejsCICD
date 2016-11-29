@@ -162,7 +162,7 @@
           "spec": {
             "containers": [
               {
-                "name": "nodejs-example",
+                "name": "nodejs-example:latest",
                 "image": " ",
                 "ports": [
                   {
