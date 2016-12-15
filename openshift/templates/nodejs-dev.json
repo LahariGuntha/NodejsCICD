@@ -133,10 +133,6 @@
         "strategy": {
           "type": "Rolling"
         },
-        "triggers": [
-          {
-          }
-        ],
         "replicas": 1,
         "selector": {
           "name": "${NAME}"
