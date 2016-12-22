@@ -74,7 +74,22 @@
         "strategy": {
           "type": "Rolling"
         },
-        "triggers": [],
+        "triggers": [
+            {
+                "type": "ImageChange",
+                "imageChangeParams": {
+                    "automatic": false,
+                    "containerNames": [
+                        "nodejs-example"
+                    ],
+                    "from": {
+                        "kind": "ImageStreamTag",
+                        "namespace": "testing",
+                        "name": "nodejs-example:latest"
+                    }
+                }
+            }
+        ],
         "replicas": 1,
         "selector": {
           "name": "${NAME}"
